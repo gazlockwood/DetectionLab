@@ -451,7 +451,7 @@ postinstall_tasks() {
   # Include Splunk and Zeek in the PATH
   echo export PATH="$PATH:/opt/splunk/bin:/opt/zeek/bin" >>~/.bashrc
   # Ping DetectionLab server for usage statistics
-  curl -s -A "DetectionLab-logger" "https://detectionlab.network/logger"
+  #curl -s -A "DetectionLab-logger" "https://detectionlab.network/logger"
 }
 
 main() {

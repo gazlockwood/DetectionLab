@@ -13,9 +13,14 @@ If ($hostname -eq "win10") {
 
 # Windows Defender should be disabled already by the GPO, sometimes it doesnt work
 If ($hostname -ne "win10") {
-  # Uninstalling Windows Defender (https://github.com/StefanScherer/packer-windows/issues/201)
-  Uninstall-WindowsFeature Windows-Defender
-  Uninstall-WindowsFeature Windows-Defender-Features
+	try{
+	  # Uninstalling Windows Defender (https://github.com/StefanScherer/packer-windows/issues/201)
+	  Uninstall-WindowsFeature Windows-Defender
+	  Uninstall-WindowsFeature Windows-Defender-Features
+	}
+	catch {
+	   Write-Host "$('[{0:HH:mm}]' -f (Get-Date)) Failed to disable Windows-Defender" -ForegroundColor red
+    }
 }
 
 # Purpose: Downloads and unzips a copy of the latest Mimikatz trunk

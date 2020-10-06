@@ -11,6 +11,8 @@ If (-not (Test-Path "C:\ProgramData\chocolatey")) {
 
 Write-Host "Installing Tomcat with requirements..."
 choco install -y --limit-output --no-progress jdk8
+$env:JAVA_HOME = (Get-ChildItem "C:\Program Files\Java\").fullname
+refreshenv
 
 #Set up variables
 $title = "apache-tomcat-7.0.88"
